@@ -24,7 +24,7 @@ ul {
 }
 
 li {
-padding: 3px;
+padding: 10px;
 margin-bottom: 10px;
 }
 
@@ -33,6 +33,7 @@ img {
   max-height: 100px;
 }
 
-a{
-  margin-bottom: 10px;
+p{
+  margin-bottom: 2px;
+  font-size: 18px;
 }

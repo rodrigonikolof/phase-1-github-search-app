@@ -18,18 +18,26 @@ function fetchUsers(input){
 
 
 function displayResults({items}){
-
-
 const userList = document.querySelector('#user-list');
-    items.forEach( ({login,avatar_url, url}) => {
-        console.log(login, avatar_url, url)
+    items.forEach( ({login,avatar_url, html_url}) => {
+        // console.log(login, avatar_url, html_url)
     
     let fetchedUsers = document.createElement('li');
     fetchedUsers.innerHTML = `
                                 <img src="${avatar_url}">
                                <p> <b> Username</b>: ${login} </p>     
-                                <a href="${url}">View Profile</a> `;
+                                <a href="${html_url}">View Profile</a>
+                                 <a href="#" id='repos'> View Repos</a>`;
+                  
     userList.appendChild(fetchedUsers);
-    
+    fetchedUsers.querySelector('#repos').addEventListener('click',(login)=> fetchRepos(login)) 
+
     })
+}
+
+
+function fetchRepos(login){
+    fetch(`https://api.github.com/users/${login}/repos`)
+    .then(res => res.json())
+    .then(data => console.log(data))
 }
